@@ -2,8 +2,8 @@ const score = document.querySelector('.score'),
   start = document.querySelector('.start'),
   gameAre = document.querySelector('.gameAre'),
   car = document.createElement('div');
-
-  car.classList.add('car');
+  
+car.classList.add('car');
 
 const keys = {
   ArrowUp: false,
@@ -18,7 +18,6 @@ const setting = {
   speed: 3
 };
 
-
 start.addEventListener('click', startGame);
 document.addEventListener('keydown', startRun);
 document.addEventListener('keyup', stopRun);
@@ -30,9 +29,8 @@ function startGame () {
   requestAnimationFrame(playGame);
 }
 
-function playGame () {
-  console.log('playGame');
-  if (setting.start === true) {
+function playGame () {  
+  if (setting.start) {
     requestAnimationFrame(playGame);
   }  
 }
