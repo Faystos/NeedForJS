@@ -20,7 +20,7 @@ const setting = {
 };
 
 function getQuantityElements (heightElement) {
-  return document.documentElement.clientHeight / heightElement + 1;
+  return document.documentElement.clientHeight / (heightElement + 1);
 }
 
 start.addEventListener('click', startGame);
