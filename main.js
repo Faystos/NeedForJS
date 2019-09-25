@@ -2,9 +2,13 @@ const score = document.querySelector('.score'),
   start = document.querySelector('.start'),
   gameArea = document.querySelector('.gameArea'),
   car = document.createElement('div'),
-  music = document.createElement('audio');
+  music = document.createElement('audio'),
+  bottomStart = start.querySelector('.start_game');
   
 car.classList.add('car');
+
+let topScore = localStorage.getItem('topScore');
+
 
 const keys = {
   ArrowUp: false,
@@ -21,11 +25,13 @@ const setting = {
   managementSpeedCar: 7
 };
 
+
+
 function getQuantityElements (heightElement) {
   return document.documentElement.clientHeight / (heightElement + 1);
 }
 
-start.addEventListener('click', startGame);
+bottomStart.addEventListener('click', startGame);
 document.addEventListener('keydown', function (evt) {
   if (evt.keyCode === 32 && !setting.start) {
     startGame();
@@ -37,6 +43,7 @@ document.addEventListener('keyup', stopRun);
 
 function startGame () {
   start.classList.add('hide');
+  gameArea.classList.remove('hide');
   gameArea.innerHTML = '';  
 
   for (let i = 0; i < getQuantityElements(100); i++) {
@@ -152,6 +159,7 @@ function gameOver () {
   start.style.top = score.offsetHeight;
   music.setAttribute('src', '');
   
+  localStorage.setItem('topScore', setting.score);
   
 
 }
