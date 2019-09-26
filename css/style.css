@@ -2,7 +2,7 @@
     width: 50px;
     height: 100px;
     background: transparent url('../image/car_police.png') center / cover no-repeat;
-    position: absolute;   
+    position: absolute;
 }
 
 .gameArea {
@@ -22,13 +22,13 @@
   left: 145px;
 }
 
-.start { 
+.start {
   display: flex;
-  align-items: flex-end; 
+  align-items: flex-end;
   width: 250px;
   min-height: 300px;
   margin: 100px auto 0 auto;
-  padding: 10px 5px 25px 5px;  
+  padding: 10px 5px 25px 5px;
   z-index: 200;
   color: #fff;
   font-size: 1.5rem;
@@ -45,15 +45,15 @@
 .score {
   position: absolute;
   top: 0;
-  left: 0;
-  width: 100%;
+  right: 620px;
+  width: 200;
   margin: 0;
   padding: 1rem 0;
   text-align: center;
-  z-index: 200;
+  z-index: 300;
   color: skyblue;
   font-size: 1.5rem;
-  background: #222;  
+  background: #222;
   font-family: sans-serif;
   font-weight: 500;
 }
@@ -78,6 +78,87 @@
 
 .start_game:active {
   opacity: 0.6;
+}
+
+.game_over {
+  width: 400px;
+  min-height: 750px;
+  border: 1px solid black;
+  border-radius: 10px;
+  margin: 60px auto 0 auto;
+  background: transparent url('../image/bk_end.jpg') center / cover no-repeat;
+}
+
+.info {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  margin: 100px 0 0 0;
+  padding: 5px;
+}
+
+.game_over--title {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: 	#FFD700;
+  margin-bottom: 400px;
+}
+
+.game_over--parag {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: 	#FFD700;
+  margin-bottom: 10px;
+  align-self: flex-start;
+  margin-left: 10px;
+}
+
+.game_over--parag:last-child {
+  margin-bottom: 60px;
+}
+
+.game_over--control {
+  display: flex;
+  justify-content: center;
+  }
+
+.button_control {
+  font-size: 15px;
+  text-decoration: none;
+  cursor: pointer;
+  width: 180px;
+  min-height: 50px;
+  font-weight: bold;
+  margin:20px auto;
+  text-align:center;
+  padding: 1px 5px;
+  color: #717171;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.3);
+  -webkit-box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.2), inset 0 0 6px 0 rgba(255, 255, 255, 0.3), 0 1px 2px rgba(0, 0, 0, 0.4);
+  -moz-box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.2), inset 0 0 6px 0 rgba(255, 255, 255, 0.3), 0 1px 2px rgba(0, 0, 0, 0.4);
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.2), inset 0 0 6px 0 rgba(255, 255, 255, 0.3), 0 1px 2px rgba(0, 0, 0, 0.4);
+  background: #f6f6f6;
+  background: -webkit-gradient(linear, left top, left bottom, from(#f6f6f6), to(#d4d4d4));
+  background: -webkit-linear-gradient(#f6f6f6, #d4d4d4);
+  background-image: -moz-linear-gradient(top, #f6f6f6, #d4d4d4);
+  background-image: -moz-gradient(top, #f6f6f6, #d4d4d4);
+  border: 1px solid #a1a1a1;
+}
+
+.button_control:hover {
+  background: #f6f6f6;
+   background: -webkit-gradient(linear, left top, left bottom, from(#f6f6f6), to(#ececec));
+   background: -webkit-linear-gradient(#f6f6f6, #ececec);
+   background-image: -moz-linear-gradient(top, #f6f6f6, #ececec);
+   background-image: -moz-gradient(top, #f6f6f6, #ececec);
+}
+
+.button_control:active {
+  opacity: 0.8;
 }
 
 .hide {
