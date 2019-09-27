@@ -6,16 +6,13 @@ const score = document.querySelector('.score'),
   bottomStart = start.querySelector('.start_game'),
   finishGame = document.querySelector('.game_over');
 
-let topGamescore = document.querySelector('.top_score');
+let topGameScore = document.querySelector('.top_score');
+let yuoGameScore = document.querySelector('.yuo_score');
 
 car.classList.add('car');
-
-let topScore = localStorage.getItem('topScore');
-console.log(topScore);
-
-topGamescore.textContent += topScore;
-
-
+let topScore;
+// topGamescore.textContent += topScore;
+topGameScore.innerHTML = 'Лучший счет: ' + 0;
 
 
 
@@ -35,8 +32,6 @@ const setting = {
   managementSpeedCar: 7
 };
 
-
-
 function getQuantityElements (heightElement) {
   return document.documentElement.clientHeight / (heightElement + 1);
 }
@@ -55,8 +50,9 @@ function startGame () {
   start.classList.add('hide');
   gameArea.classList.remove('hide');
   score.classList.remove('hide');
+  gameArea.innerHTML = '';  
 
-  gameArea.innerHTML = '';
+  topScore = localStorage.getItem('topScore');    
 
   for (let i = 0; i < getQuantityElements(100); i++) {
     const line = document.createElement('div');
@@ -86,14 +82,15 @@ function startGame () {
   car.style.top = 'auto';
   car.style.bottom = '10px';
   setting.x = car.offsetLeft;
-  setting.y = car.offsetTop;
+  setting.y = car.offsetTop;  
   requestAnimationFrame(playGame);
 }
 
 function playGame () {
   if (setting.start) {
     setting.score += setting.speed;
-    score.innerHTML = 'SCORE<br>' + setting.score;
+    score.innerHTML = 'SCORE<br>' + setting.score;        
+
     moveRoad();
     moveEnemy();
     if (keys.ArrowLeft && setting.x > 0) {
@@ -111,7 +108,7 @@ function playGame () {
     }
 
     car.style.left = setting.x + 'px';
-    car.style.top = setting.y + 'px';
+    car.style.top = setting.y + 'px';           
     requestAnimationFrame(playGame);
   }
 }
@@ -153,6 +150,9 @@ function moveEnemy () {
         carRect.left <= enemyRect.right &&
         carRect.bottom >= enemyRect.top) {
           gameOver();
+          if (topScore < setting.score) {
+            localStorage.setItem('topScore', setting.score);            
+          }
     }
 
     it.y += setting.speed / 2;
@@ -165,18 +165,19 @@ function moveEnemy () {
   });
 }
 
-function gameOver () {
+function gameOver () {  
   setting.start = false;
   gameArea.classList.add('hide');
   score.classList.add('hide');
   finishGame.classList.remove('hide');
   start.style.top = score.offsetHeight;
-  music.setAttribute('src', '');
-
-  if (topScore < setting.score) {
-    localStorage.setItem('topScore', setting.score);
-  }
-
-
-
+  music.setAttribute('src', '');   
+  topGameScore.innerHTML = `Последний лучший счет: ${topScore}`; 
+  yuoGameScore.innerHTML = `Ваш счет: ${setting.score}`;    
 }
+
+
+
+
+
+
